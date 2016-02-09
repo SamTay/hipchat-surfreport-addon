@@ -38,17 +38,36 @@ module.exports = function (app, addon) {
     cors(),
     addon.authenticate(),
     function(req, res) {
-      res.json({
-        "label": {
-          "type": "html",
-          "value": "Surf's up brah"
-        },
-        "status": {
-          "type": "lozenge",
-          "value": {
-            "label": "4-6ft",
-            "type": "success"
-          }
+      surfline.getSummaryJson(function(err, json) {
+        if (err) {
+          res.json({
+            "label": {
+              "type": "html",
+              "value": "No connection"
+            },
+            "status": {
+              "type": "lozenge",
+              "value": {
+                "label": "Broken",
+                "type": "error"
+              }
+            }
+          });
+        } else {
+          console.log(json);
+          res.json({
+            "label": {
+              "type": "html",
+              "value": json.conditionText
+            },
+            "status": {
+              "type": "lozenge",
+              "value": {
+                "label": json.surfHeight,
+                "type": json.conditionClass
+              }
+            }
+          });
         }
       });
     }
