@@ -1,85 +1,14 @@
 {{!< layout}}
 <div class="aui-group sidebar">
-    <div class="aui-row">
-        <div class="aui-item">
-            <h3>Your sidebar goes here!</h3>
-            <ul>
-            <li>Group ID: {{identity.groupId}}</li>
-            <li>
-                Room ID: {{identity.roomId}}
-                <small>
-                    <a href="#" id="room">room details</a> |
-                    <a href="#" id="participants">participants</a>
-                </small>
-            </li>
-            <li>
-                User ID: {{identity.userId}}
-                <small>
-                    <a href="#" id="user">user details</a>
-                </small>
-            </li>
-            </ul>
-        </div>
-    </div>
-    <br>
-    <div class="aui-row">
-        <div class="aui-item">
-            <h4 id="details-title"></h4>
-            <pre id="details"></pre>
-        </div>
-    </div>
-    <br>
-    <div class="aui-row">
-        <div class="aui-item">
-            <button id="say_hello" class="aui-button">Say Hello!</button>
-        </div>
-    </div>
+  <div class="surfline-container">
+    <!-- WIDGET CONTENTS COPYRIGHT SURFLINE.COM 2016 -->
+    <!-- WIDGET VERSION 2.0 MARCH 2016 | THE WASHOUT -->
+    <div class="slwd_bt"><script type="text/javascript" src="http://www.surfline.com/widgets2/widget_output_forecast.cfm?id=5293&mdl=1111&layout=&wid=53973&ftr=1"></script><div class="slwd_bx"><a href="http://www.surfline.com" class="slwd_lk">Surfline</a> <a href="http://www.surfline.com/surf-forecasts" class="slwd_lk">Surf Forecasts</a></div><div class="slwd_tl"></div><div class="slwd_tr"></div></div>
+    <!-- WIDGET CONTENTS COPYRIGHT SURFLINE.COM 2016 -->
+  </div>
+  <div class="links-container">
+    <p><h4>Links</h4></p>
+    <p><a href="http://www.swellinfo.com/surf-forecast/folly-beach-south-carolina">Swellinfo</a></p>
+    <p><a href="http://www.oceansurfshop.com/">Ocean Cam</a></p>
+    <p><a href="http://www.oceansurfshop.com/report/">Ocean Report</a></p>
 </div>
-<script>
-$('#say_hello').on('click', function(){
-    $.ajax({
-        type: 'POST',
-        url: '/send_notification',
-        headers: { 'Authorization': 'JWT {{signed_request}}' },
-        dataType: 'json',
-        data: {}
-    });
-});
-
-// The following are client-side APIs you can call to get information about
-// the room or user. For more information, go to:
-// https://developer.atlassian.com/hipchat/guide/hipchat-ui-extensions/views/javascript-api#JavascriptAPI-GettingcontextualinformationfromtheHipChatClient
-
-$('#room').on('click', function(){
-    AP.require('room', function(room){
-       room.getRoomDetails(function(err, data){
-          if (!err) {
-              $('#details-title').html('Room details');
-              $('#details').html(JSON.stringify(data, null, 2));
-          }
-       });
-    });
-});
-
-$('#participants').on('click', function(){
-    AP.require('room', function(room){
-       room.getParticipants(function(err, data){
-          if (!err) {
-              $('#details-title').html('Room participants');
-              $('#details').html(JSON.stringify(data, null, 2));
-          }
-       });
-    });
-});
-
-$('#user').on('click', function(){
-    AP.require('user', function(user){
-       user.getCurrentUser(function(err, data){
-          if (!err) {
-              $('#details-title').html('User details');
-              $('#details').html(JSON.stringify(data, null, 2));
-          }
-       });
-    });
-});
-</script>

@@ -1,10 +1,10 @@
 {
     "key": "hipchat-surfreport-addon",
-    "name": "Hello!",
-    "description": "My very first HipChat add-on",
+    "name": "Surfline Report",
+    "description": "Adds surfline widget to sidebar",
     "vendor": {
-        "name": "Charlie Awyeah",
-        "url": "https://www.hipchat.com"
+        "name": "Sam Tay",
+        "url": "https://www.github.com/samtay"
     },
     "links": {
         "self": "{{localBaseUrl}}/atlassian-connect.json",
@@ -20,19 +20,10 @@
         "installable": {
             "callbackUrl": "{{localBaseUrl}}/installable"
         },
-        "configurable": {
-             "url": "{{localBaseUrl}}/config"
-        },
-        "webhook": {
-            "url": "{{localBaseUrl}}/webhook",
-            "pattern": "^/hello",
-            "event": "room_message",
-            "name": "Hello!"
-        },
         "glance": [
             {
                "name": {
-                   "value": "Hello!"
+                   "value": "Surf Report"
                },
                "queryUrl": "{{localBaseUrl}}/glance",
                "key": "hipchat-surfreport-addon.glance",
@@ -47,43 +38,10 @@
             {
                 "key": "hipchat-surfreport-addon.sidebar",
                 "name": {
-                    "value": "Hello Sidebar!"
+                    "value": "Surfline Widget"
                 },
                 "location": "hipchat.sidebar.right",
                 "url": "{{localBaseUrl}}/sidebar"
-            }
-        ],
-        "dialog": [
-            {
-                "key": "hipchat-surfreport-addon.dialog",
-                "title": {
-                    "value": "Hello Dialog!"
-                },
-                "url": "{{localBaseUrl}}/dialog",
-                "options": {
-                  "style": "normal",
-                  "primaryAction": {
-                    "name": {
-                      "value": "Say Hello!"
-                    },
-                    "key": "hipchat-surfreport-addon.save",
-                    "enabled": true
-                  },
-                  "size": {
-                    "width": "400px",
-                    "height": "200px"
-                  }
-                }
-            }
-        ],
-        "action": [
-            {
-                "key": "hipchat-surfreport-addon.action",
-                "name": {
-                    "value": "Launch Hello Dialog!"
-                },
-                "target": "hipchat-surfreport-addon.dialog",
-                "location": "hipchat.input.action"
             }
         ]
     }
