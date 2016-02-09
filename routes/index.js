@@ -58,12 +58,12 @@ module.exports = function (app, addon) {
           res.json({
             "label": {
               "type": "html",
-              "value": json.conditionText
+              "value": json.surfHeight
             },
             "status": {
               "type": "lozenge",
               "value": {
-                "label": json.surfHeight,
+                "label": json.conditionText,
                 "type": json.conditionClass
               }
             }
